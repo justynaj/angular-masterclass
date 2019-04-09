@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './core.component.html',
-  styleUrls: ['./core.component.scss']
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class CoreComponent {
+export class AppComponent {
   title = 'facebook';
 }
