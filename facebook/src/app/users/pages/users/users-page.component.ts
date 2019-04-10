@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { User } from '../../../shared/interfaces/user';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-users-page',
@@ -6,7 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users-page.component.scss']
 })
 export class UsersPageComponent implements OnInit {
-  constructor() {}
+  public user: User = null;
 
-  ngOnInit() {}
+  constructor(private usersService: UsersService, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.setupUser();
+  }
+
+  private setupUser(): void {
+    const userId = this.route.snapshot.params.userId;
+    this.usersService.getUserById(userId).subscribe({
+      next: response => {
+        this.user = response;
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
 }
