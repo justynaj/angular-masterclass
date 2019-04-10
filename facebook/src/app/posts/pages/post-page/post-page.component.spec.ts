@@ -12,7 +12,10 @@ describe('PostPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PostPageComponent, PostListItemComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([{ path: '', component: PostPageComponent }])]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([{ path: ':postId', component: PostPageComponent }])
+      ]
     }).compileComponents();
   }));
 

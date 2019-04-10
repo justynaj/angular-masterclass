@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { PostListComponent } from './post-list.component';
 import { PostListItemComponent } from '../post-list-item/post-list-item.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PostListComponent', () => {
   let component: PostListComponent;
@@ -11,7 +12,7 @@ describe('PostListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PostListComponent, PostListItemComponent],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule]
     }).compileComponents();
   }));
 
