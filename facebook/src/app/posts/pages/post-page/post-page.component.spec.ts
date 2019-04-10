@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 
 import { PostPageComponent } from './post-page.component';
 import { PostListItemComponent } from '../../../shared/components/post-list-item/post-list-item.component';
@@ -10,15 +9,10 @@ describe('PostPageComponent', () => {
   let component: PostPageComponent;
   let fixture: ComponentFixture<PostPageComponent>;
 
-  const mockRouter = {
-    navigate: jasmine.createSpy('navigate')
-  };
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PostPageComponent, PostListItemComponent],
-      imports: [HttpClientTestingModule],
-      providers: [{ provide: Router, useValue: mockRouter }]
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([{ path: '', component: PostPageComponent }])]
     }).compileComponents();
   }));
 
