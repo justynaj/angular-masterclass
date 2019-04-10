@@ -1,6 +1,6 @@
-<div class="card" *ngIf="user">
-  <img [src]="user.avatar_url" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">{{ user.name }}</h5>
+<div class="media" *ngIf="user">
+  <img [src]="user.avatar_url" class="mr-3" alt="..." />
+  <div class="media-body">
+    <h5 class="mt-0">{{ user.name }}</h5>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { User } from '../../shared/interfaces/user';
+import { User } from '../../shared/interfaces/user.interface';
 export interface Post {
   id: string;
   created_time: string;

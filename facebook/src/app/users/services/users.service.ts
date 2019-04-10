@@ -6,7 +6,8 @@ import { map } from 'rxjs/operators';
 
 import { PostsResponse } from '../../posts/interfaces/responses/posts-response.interface';
 import { environment } from 'src/environments/environment';
-import { User } from '../../shared/interfaces/user';
+import { User } from '../../shared/interfaces/user.interface';
+import { Users } from '../../shared/interfaces/users.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +15,25 @@ import { User } from '../../shared/interfaces/user';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  public getPosts(): Observable<PostsResponse> {
-    return this.http.get<PostsResponse>(environment.postsUrl);
+  public getUsers(): Observable<Users> {
+    return this.http.get<PostsResponse>(environment.postsUrl).pipe(
+      map(response => response.posts),
+      map(posts => {
+        const users = posts.map(post => {
+          return post.author;
+        });
+        // console.log(users);
+        return users;
+      })
+    );
   }
   public getUserById(userId: string): Observable<User> {
-    return this.getPosts().pipe(
-      map(response => {
-        return response.posts;
-      }),
-      map(posts => {
-        return posts.filter(post => {
-          return post.author.id === userId;
+    return this.getUsers().pipe(
+      map(users => {
+        return users.find(user => {
+          return user.id === userId;
         });
-      }),
-      map(posts => posts[0].author)
+      })
     );
   }
 }
