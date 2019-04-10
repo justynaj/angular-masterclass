@@ -5,6 +5,10 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   {
+    path: 'posts',
+    loadChildren: '../posts/posts.module#PostsModule'
+  },
+  {
     path: '',
     component: HomePageComponent
   }
