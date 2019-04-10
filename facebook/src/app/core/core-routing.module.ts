@@ -9,6 +9,10 @@ const routes: Routes = [
     loadChildren: '../posts/posts.module#PostsModule'
   },
   {
+    path: 'users',
+    loadChildren: '../users/users.module#UsersModule'
+  },
+  {
     path: '',
     component: HomePageComponent
   }
