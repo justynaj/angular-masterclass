@@ -3,6 +3,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePL from '@angular/common/locales/pl';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -16,7 +17,7 @@ registerLocaleData(localePL);
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent, MenuComponent, SignInPageComponent, SignUpPageComponent],
-  imports: [BrowserModule, CoreRoutingModule, HttpClientModule, SharedModule],
+  imports: [BrowserModule, CoreRoutingModule, HttpClientModule, SharedModule, ReactiveFormsModule],
   providers: [{ provide: LOCALE_ID, useValue: 'pl' }],
   bootstrap: [AppComponent]
 })

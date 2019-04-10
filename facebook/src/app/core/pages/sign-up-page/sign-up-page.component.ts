@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up-page.component.scss']
 })
 export class SignUpPageComponent implements OnInit {
+  public isRegistrationSuccess = false;
 
-  constructor() { }
+  public registerForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
+    person: new FormGroup({
+      name: new FormControl(''),
+      surname: new FormControl('')
+    })
+  });
 
-  ngOnInit() {
+  constructor() {}
+
+  ngOnInit() {}
+
+  async handleSubmit() {
+    const formData = this.registerForm.getRawValue();
+    console.log(formData);
+    this.isRegistrationSuccess = true;
   }
-
 }
